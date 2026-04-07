@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  generator-ocen:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: generator-ocen-app
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      # Jeśli Twoja aplikacja zależy od API Gemini podczas działania serwera, 
+      # możesz tu przekazać klucz (choć Vite zazwyczaj pakuje go w buildzie, 
+      # jeśli używałeś VITE_GEMINI_API_KEY).
+      # - GEMINI_API_KEY=twój_klucz
+    restart: unless-stopped
